@@ -1,7 +1,11 @@
 package DBICx::MapMaker;
+BEGIN {
+  $DBICx::MapMaker::VERSION = '0.03';
+}
+# ABSTRACT: automatically create a DBIx::Class mapping table
 use Moose;
 
-our $VERSION   = '0.02';
+our $VERSION;
 our $AUTHORITY = 'CPAN:JROCKWAY';
 
 # avoid clogging up our methods
@@ -15,7 +19,6 @@ for my $direction (qw/left right/){
         is       => 'ro',
         isa      => 'Str',
         required => 1,
-        coerce   => 1,
     );
 
     has "${direction}_name" => (
@@ -116,11 +119,17 @@ sub setup_table {
 
 1;
 
-__END__
+
+
+=pod
 
 =head1 NAME
 
 DBICx::MapMaker - automatically create a DBIx::Class mapping table
+
+=head1 VERSION
+
+version 0.03
 
 =head1 SYNOPSIS
 
@@ -230,3 +239,20 @@ L<http://www.iinteractive.com>
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
+
+=head1 AUTHOR
+
+Jonathan Rockway <jrockway@cpan.org>
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2011 by Jonathan Rockway.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
+
+=cut
+
+
+__END__
+
